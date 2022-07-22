@@ -1,5 +1,5 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import { AgendaPage } from "../pages/AgendaPage"
+import { Navigate, Route, Routes } from "react-router-dom";
+import { AgendaPage } from "../pages/AgendaPage";
 
 
 
