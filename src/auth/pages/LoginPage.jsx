@@ -42,7 +42,7 @@ export const LoginPage = () => {
 
         <AuthLayout title="Login">
         
-                <form onSubmit={ onSubmit }>
+                <form onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster'>
                     <Grid container>
                             {/* Login usuarios */}
                             <Grid item xs={ 12 }sx={{mt: 2}}>
@@ -70,6 +70,7 @@ export const LoginPage = () => {
                                     />
                             </Grid>
 
+                            {/* Mensaje de Error */}
                             <Grid 
                                 container
                                 display={ !!errorMessage ? '': 'none' }
@@ -82,14 +83,8 @@ export const LoginPage = () => {
                             </Grid>
 
 
-
-
-
-
-
-                            {/* Boton para loguearse */}
+                            {/* Boton Login */}
                             <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
-                                {/* Login con cuenta creada */}
                                 <Grid item xs={ 12 } sm={ 6 }>
                                     <Button 
                                     disabled={ isAuthenticating }
@@ -99,7 +94,8 @@ export const LoginPage = () => {
                                         Ingresar
                                     </Button>
                                 </Grid>
-                                {/* Login con Cuenta de Google */}
+
+                                {/* Boton de Google */}
                                 <Grid item xs={ 12 } sm={ 6 }>
                                     <Button
                                     disabled={ isAuthenticating }
