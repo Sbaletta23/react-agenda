@@ -4,7 +4,7 @@ import { DeleteOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-import { ImageGallery } from '../components'
+import { ImageGallery } from '../components/ImageGallery'
 import { useForm } from '../../hooks/useForm';
 import { setActiveNote, startDeletingNote, startSaveNote, startUploadingFiles } from '../../store/agenda';
 
@@ -132,7 +132,7 @@ export const NoteView = () => {
 
 
             {/* Image gallery */}
-            <ImageGallery images={ note.imageUrls } />
+            <ImageGallery images={ note.imageUrls} />
 
         </Grid>
     )
