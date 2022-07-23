@@ -1,17 +1,36 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { IconButton } from '@mui/material';
 import { AddOutlined } from '@mui/icons-material';
 import { AgendaLayout } from '../layout/AgendaLayout';
-import {  NothingSelectedView } from '../views';
+import {  NoteView, NothingSelectedView } from '../views';
+import { startNewNote } from '../../store/agenda/thunks';
 
 export const AgendaPage = () => {
+
+
+    const dispatch = useDispatch();
+    const { isSaving, active } = useSelector( state => state.agenda );
+
+    const onClickNewNote = () => {
+    dispatch( startNewNote() );
+    }
+
+
+
     return (
         <AgendaLayout>
         
-
-        <NothingSelectedView />
+        {/* Vistas de las notas activas y Vista de cuando no hay nada */}
+        {
+            (!!active)
+            ? <NoteView />
+            : <NothingSelectedView />
+        }
 
             <IconButton
+                onClick={ onClickNewNote }
                 size='large'
+                disabled={ isSaving }
                 sx={{
                 color: 'white',
                 backgroundColor: 'error.main',
