@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IconButton } from '@mui/material';
 import { AddOutlined } from '@mui/icons-material';
+
 import { AgendaLayout } from '../layout/AgendaLayout';
 import {  NoteView, NothingSelectedView } from '../views';
 import { startNewNote } from '../../store/agenda/thunks';

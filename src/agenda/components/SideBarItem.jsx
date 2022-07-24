@@ -5,7 +5,6 @@ import { TurnedInNot } from '@mui/icons-material';
 import { setActiveNote } from '../../store/agenda/agendaSlice';
 
 
-
 export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
 
     const dispatch = useDispatch();

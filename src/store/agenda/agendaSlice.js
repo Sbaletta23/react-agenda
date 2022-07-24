@@ -7,6 +7,13 @@ export const agendaSlice = createSlice({
         messageSaved: '',
         notes: [],
         active: null,
+        // active: {
+        //     id: 'ABC123',
+        //     title: '',
+        //     body: '',
+        //     date: 1234567,
+        //     imageUrls: [], // https://foto1.jpg, https://foto2.jpg, https://foto3.jpg
+        // }
     },
     reducers: {
         savingNewNote: ( state ) => {
@@ -27,7 +34,7 @@ export const agendaSlice = createSlice({
             state.isSaving = true;
             state.messageSaved = '';
         },
-        updateNote: (state, action ) => { // payload: note
+        updateNote: (state, action ) => { 
             state.isSaving = false;
             state.notes = state.notes.map( note => {
 
@@ -60,7 +67,6 @@ export const agendaSlice = createSlice({
 });
 
 
-// Action creators are generated for each case reducer function
 export const { 
     addNewEmptyNote,
     clearNotesLogout,

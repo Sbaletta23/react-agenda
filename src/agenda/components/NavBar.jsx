@@ -32,7 +32,7 @@ export const NavBar = ({drawerWidth = 240}) => {
                     </IconButton>
 
                     <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                        <Typography variant='h6' noWrap component='div'> Reuniones </Typography>
+                        <Typography variant='h6' noWrap component='div'> Lista de tareas </Typography>
 
                         <IconButton
                             color='error'

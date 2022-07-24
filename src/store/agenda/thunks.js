@@ -1,8 +1,10 @@
-import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
-import { FirebaseDB } from "../../firebase/config";
-import { fileUpload } from "../../helpers";
-import { loadNotes } from "../../helpers/loadNotes";
-import { addNewEmptyNote, deleteNoteById, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from "./agendaSlice";
+import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore/lite';
+import { FirebaseDB } from '../../firebase/config';
+import { addNewEmptyNote, setActiveNote } from './';
+import { deleteNoteById, savingNewNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from './agendaSlice';
+import { fileUpload, loadNotes } from '../../helpers';
+
+
 
 
 export const startNewNote = () => {
@@ -15,26 +17,28 @@ export const startNewNote = () => {
         const newNote = {
             title: '',
             body: '',
+            imageUrls:[],
             date: new Date().getTime(),
         }
 
         const newDoc = doc( collection( FirebaseDB, `${ uid }/agenda/notes`) );
         await setDoc( newDoc, newNote );
 
-        newNote.id = newDoc.id;
+        newNote.id = newDoc.id;  
 
-        //Acciones
+        //! dispatch
         dispatch( addNewEmptyNote( newNote ) );
         dispatch( setActiveNote( newNote ) );
 
     }
 }
 
+
 export const startLoadingNotes = () => {
     return async( dispatch, getState ) => {
         
         const { uid } = getState().auth;
-        if ( !uid ) throw new Error('El ID del usuario no existe');
+        if ( !uid ) throw new Error('El UID del usuario no existe');
 
         const notes = await loadNotes( uid );
         dispatch( setNotes( notes ) );
@@ -65,7 +69,7 @@ export const startUploadingFiles = ( files = [] ) => {
     return async( dispatch ) => {
         dispatch( setSaving() );
             
-
+        // await fileUpload( files[0] );
         const fileUploadPromises = [];
         for ( const file of files ) {
             fileUploadPromises.push( fileUpload( file ) )
@@ -78,6 +82,7 @@ export const startUploadingFiles = ( files = [] ) => {
     }
 }
 
+
 export const startDeletingNote = () => {
     return async( dispatch, getState) => {
 
@@ -88,5 +93,6 @@ export const startDeletingNote = () => {
         await deleteDoc( docRef );
 
         dispatch( deleteNoteById(note.id) );
+
     }
 }
