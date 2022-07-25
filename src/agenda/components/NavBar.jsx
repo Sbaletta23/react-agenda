@@ -32,13 +32,14 @@ export const NavBar = ({drawerWidth = 240}) => {
                     </IconButton>
 
                     <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                        <Typography variant='h6' noWrap component='div'> Lista de tareas </Typography>
+                        <Typography variant='h6' noWrap component='div'> AGENDA APP</Typography>
 
                         <IconButton
                             color='error'
                             onClick={ onLogout }
                         >
                             <LogoutOutlined/>
+                            
                         </IconButton>
                     </Grid>
 

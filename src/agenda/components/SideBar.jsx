@@ -10,14 +10,14 @@ export const SideBar = ({ drawerWidth = 240 }) => {
     return (
     <Box
         component='nav'
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }}}
     >
             <Drawer
                 variant='permanent' // temporary
                 open
                 sx={{ 
                     display: { xs: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                 }}
             >
                     <Toolbar>
@@ -34,7 +34,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
                             <SideBarItem key={ note.id } { ...note } />
                         ))
                     }
-                </List>
+                    </List>
 
             </Drawer>
 
